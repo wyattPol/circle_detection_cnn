@@ -33,13 +33,6 @@ https://universe.roboflow.com/trees-m4e49/-39p4p/dataset/1
 python train3.py
 ```
 
-- Resume training from a saved model:
-
-You are able to resume training your model from a saved checkpoint by running the following:
-
-```shell
-python train.py --resume {directory path to your saved model}
-```
 # Model Testing
 
 THere is already the test.py you can use(be careful with path):
