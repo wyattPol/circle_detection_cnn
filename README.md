@@ -47,7 +47,4 @@ folder model_net_1 contains the trained model from network2.py.
 
 Display like below 
 
-![circle_detect](images/1.png)
-![circle_detect](images/2.png)
-![circle_detect](images/3.png)
 ![circle_detect](images/4.png)
