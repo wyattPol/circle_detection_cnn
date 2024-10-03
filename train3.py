@@ -26,11 +26,9 @@ def set_seed(seed):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False  # Disable CuDNN benchmarking for reproducibility
 
-# Set a seed
 seed = 42
 set_seed(seed)
 
-# Now, any random operation in PyTorch, NumPy, or built-in Python random module will produce the same results when run multiple times with the same seed.
 
 
 parser = argparse.ArgumentParser(description='PyTorch Model Training')
@@ -67,7 +65,7 @@ parser.add_argument('--out_npy_file', default='losses.npy',
                     help='Path to save the numpy file containing train and valid losses')
 
 
-class NoisyImages(Dataset):
+class CustomImages(Dataset):
     def __init__(self, path_to_trainset, transform=None):
         self.dataset = pd.read_csv(path_to_trainset, sep=' ')
         self.transform = transform
@@ -120,7 +118,7 @@ def main():
     cudnn.benchmark = True
     normalize = transforms.Normalize(mean=[0.5], std=[0.5])
 
-    trainset = NoisyImages(
+    trainset = CustomImages(
         args.data,
         transforms.Compose([
             normalize,
@@ -130,7 +128,7 @@ def main():
         trainset, batch_size=args.batch_size, shuffle=True,
         num_workers=args.workers)
 
-    validset = NoisyImages(
+    validset = CustomImages(
         args.val_data,
         transforms.Compose([
             normalize,
